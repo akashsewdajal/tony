@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\assets",
+    "\\assets\\img",
+    "\\assets\\img\\device-mockups"
   ],
   "PreviewInSolutionExplorer": false
 }
