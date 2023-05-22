@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\assets"
+    "\\assets",
+    "\\css"
   ],
-  "SelectedNode": "\\faq.html",
+  "SelectedNode": "\\css\\styles.css",
   "PreviewInSolutionExplorer": false
 }
