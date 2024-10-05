@@ -11,6 +11,7 @@
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
         <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js" crossorigin="anonymous"></script>
+        
     </head>
     <body>
         <div id="layoutDefault">
@@ -196,16 +197,20 @@
                                         <p class="page-header-ui-text">
                                             Wij geven graag vrijblijvend advies of maken graag een afspraak, vul hiervoor het formulier in.
                                             Neem contact met ons op
-                                        <p class="font-weight-bold">06 123456789 </p>
+                                        <p class="font-weight-bold">+31642004357</p>
                                         </p>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="card rounded-3 text-dark">
                                             <div class="card-header py-4">Neem contact met ons op.</div>
                                             <div class="card-body">
-                                                <!--start formulier
-                                                    -->
-                                                    <form target="_blank" action="mail.php" method="post">
+                                                <!--start formulier-->
+                                                <style>
+                                                    .hidden {
+                                                        display: none;
+                                                    }
+                                                </style>
+                                                    <form id="contactForm">
                                                         <div class="row gx-5 mb-3">
                                                             <div class="col-md-6">
                                                                 <label class="small text-gray-600" for="leadCapFirstName">Uw voornaam</label>
@@ -228,8 +233,41 @@
                                                             <label class="small text-gray-600" for="exampleFormControlTextarea1">Bericht</label>
                                                             <textarea class="form-control" id="message" name="bericht" rows="3"></textarea>
                                                         </div>
+                                                        <div class="hidden">
+                                                            <label for="honeypot">Score:</label>
+                                                            <input type="text" id="honeypot" name="honeypot">
+                                                        </div>
                                                         <div class="d-grid"><button class="btn btn-primary fw-500" type="submit">Verstuur bericht</button></div>
                                                     </form>
+
+                                                    <script>
+                                                        // Obfuscate email address
+                                                        document.getElementById('email').innerHTML = '<a href="mailto:toonparket@gmail.com">toonparket@gmail.com</a>';
+                                                
+                                                        // Handle form submission
+                                                        document.getElementById('contactForm').addEventListener('submit', function(event) {
+                                                            event.preventDefault(); // Prevent default form submission
+                                                
+                                                            // Check honeypot field
+                                                            if (document.getElementById('honeypot').value !== '') {
+                                                                alert('Spam detected!');
+                                                                return;
+                                                            }
+                                                
+                                                            // Collect form data
+                                                            const voornaam = document.getElementById('voornaam').value;
+                                                            const achternaam = document.getElementById('achternaam').value;
+                                                            const email = document.getElementById('email').value;
+                                                            const telefoonnumer = document.getElementById('telefoonnumer').value;
+                                                            const bericht = document.getElementById('message').value;
+                                                
+                                                            // Create mailto link
+                                                            const mailtoLink = `mailto:toonparket@gmail.com?subject=Contact Form Submission&body=Voornaam: ${voornaam}%0AAchternaam: ${achternaam}%0AEmail: ${email}%0ATelefoonnumer: ${telefoonnumer}%0ABericht: ${bericht}`;
+                                                
+                                                            // Open mailto link
+                                                            window.location.href = mailtoLink;
+                                                        });
+                                                    </script>
                                             </div>
                                         </div>
                                     </div>
@@ -251,7 +289,7 @@
                             <div class="row gx-5 align-items-center">
                                 <div class="col-lg-6 mb-4 mb-lg-0">
                                     <h4 class="text-primary">Bel ons nu op!</h4>
-                                    <p class="lead mb-0">Neem contact met ons op 06 123456789</p>
+                                    <p class="lead mb-0">Neem contact met ons op +31642004357</p>
                                 </div>
                                 <!--
                         <div class="col-lg-6 text-lg-end">
