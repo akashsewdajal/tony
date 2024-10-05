@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $telefoonnumer = htmlspecialchars($_POST['telefoonnumer']);
     $bericht = htmlspecialchars($_POST['bericht']);
 
+    
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "Invalid email format";
         exit;
@@ -16,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $body = "Name: $voornaam $achternaam\nEmail: $email\nTelefoonnumer: $telefoonnumer\nMessage:\n$bericht";
     $headers = "From: $email";
 
-    if (mail($to, $subject, $body, $headers)) {
+    if (mail($to)) {
         echo "Message sent successfully!";
     } else {
         echo "Failed to send message.";
